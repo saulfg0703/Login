@@ -18,7 +18,7 @@ private String usuario;
         pass = datos.getString("contra");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        if(usuario.equals("saul") && pass.equals("aaa")) {
+        if(usuario.equals("saul") && pass.equals("1234")) {
             builder.setTitle("Validar");
             builder.setMessage("Login correcto");
             builder.setPositiveButton("Aceptar", null);

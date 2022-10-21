@@ -2,28 +2,16 @@ package com.example.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.login.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private String nombre,contra;
-
+    WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +19,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         nombre = findViewById(R.id.nombre).toString();
         contra =findViewById(R.id.contraseña).toString();
+        webView = (WebView) findViewById(R.id.pagina);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("https://www.google.com");
+
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
     }
     public void acceder(View vista){
         Intent i = new Intent(this,SegundaActividad.class);
@@ -42,4 +37,7 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("contra", (CharSequence) contra);
         startActivity(i);
     }
+
+
+
 }
